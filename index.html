@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="no">
+
+<head>
+    <title> Time remaining on logistics </title>
+    <meta charset="utf-8">
+</head>
+<style>
+    #paste {
+        font-size: 60px;
+        text-align: center;
+        border: solid;
+        border-radius: 20px;
+        width: 70%;
+        margin: auto;
+        margin-top: 300px;
+    }
+</style>
+
+<body>
+    <div id="paste">
+
+    </div>
+    <script>
+        function start() {
+
+            var today = new Date();
+            var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+            var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+            var dateTime = date + ' ' + time;
+            var today = dateTime;
+
+            const now = new Date(dateTime);
+            const date1 = new Date("June 23, 2022 13:00:00 GMT+01:00");
+            var diffTime = Math.abs(date1 - now);
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+
+            var dayDiff = Math.floor(diffTime / 86400000);
+            var hourDiff = Math.floor((diffTime % 86400000) / 3600000);
+            var minuteDiff = Math.floor(((diffTime % 86400000) % 3600000) / 60000);
+            var secondDiff = Math.floor((((diffTime % 86400000) % 3600000) % 60000) / 1000);
+            document.getElementById("paste").innerHTML = dayDiff + " days, " + hourDiff + " hours, " + minuteDiff + " minutes, and  " + secondDiff + " seconds ";
+        }
+        setInterval(start, 1000);
+
+    </script>
+</body>
+
+
+</html>
